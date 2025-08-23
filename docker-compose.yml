@@ -1,0 +1,15 @@
+version: "3.8"
+
+services:
+  jupyter:
+    image: jupyter/pyspark-notebook:latest
+    container_name: jupyter-pyspark
+    ports:
+      - "8888:8888"
+    environment:
+      - PYSPARK_PYTHON=python3
+      - PYSPARK_DRIVER_PYTHON=jupyter
+      - PYSPARK_DRIVER_PYTHON_OPTS=notebook
+    volumes:
+      - ./notebooks:/home/jovyan/work
+    command: start-notebook.sh --NotebookApp.token='' --NotebookApp.password=''
